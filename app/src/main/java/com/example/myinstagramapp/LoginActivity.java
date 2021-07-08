@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUserName;
     private EditText etPassword;
     private Button btnLogin;
+    private Button btnSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         etUserName = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        btnSignup = findViewById(R.id.btnSignup);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +45,16 @@ public class LoginActivity extends AppCompatActivity {
                 String username = etUserName.getText().toString();
                 String password = etPassword.getText().toString();
                 loginUser(username, password);
+            }
+        });
+
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "onClick login button");
+                String username = etUserName.getText().toString();
+                String password = etPassword.getText().toString();
+                signupUser(username, password);
             }
         });
     }
@@ -59,6 +72,24 @@ public class LoginActivity extends AppCompatActivity {
                 // Navigate to the main activity if the user has signed in properly
                 goMainActivity();
                 Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void signupUser(String username, String password) {
+        Log.i(TAG, "Attempting to create a  user " + username);
+        ParseUser user = new ParseUser();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.put(username, password);
+        user.signUpInBackground(new SignUpCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    // Hooray! Let them use the app now.
+                } else {
+                    // Sign up didn't succeed. Look at the ParseException
+                    // to figure out what went wrong
+                }
             }
         });
     }
