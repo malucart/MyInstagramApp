@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnLogout;
     private Button btnCaptureImage;
     private Button btnSubmit;
+    private Button btnFeed;
     private EditText etDescription;
     private ImageView ivPostImage;
     private File photoFile;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnLogout = findViewById(R.id.btnLogout);
+        btnFeed = findViewById(R.id.btnFeed);
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +100,19 @@ public class MainActivity extends AppCompatActivity {
                 savePost(description, currentUser, photoFile);
             }
         });
+
+        btnFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goFeedActivity();
+            }
+        });
+    }
+
+    public void goFeedActivity(){
+        Intent intent = new Intent(MainActivity.this, FeedActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void lauchCamera() {
