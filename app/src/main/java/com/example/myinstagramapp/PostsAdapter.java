@@ -34,8 +34,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     private ImageView ivImage;
     private OnClickListener clickListener;
 
-    public PostsAdapter(Context context, List<Post> posts) { // OnClickListener clickListener
-        // this.clickListener = clickListener;
+    public PostsAdapter(Context context, List<Post> posts, OnClickListener clickListener) {
+        this.clickListener = clickListener;
         this.context = context;
         this.posts = posts;
     }

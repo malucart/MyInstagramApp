@@ -1,45 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:orientation="vertical"
+    android:background="@color/black"
+    android:backgroundTint="@color/black"
     tools:context=".PostsAdapter">
 
     <TextView
         android:id="@+id/tvUsername"
-        android:layout_width="222dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/white"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="18dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        tools:text="Luiza" />
+        tools:text="rahul" />
 
     <ImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:scaleType="centerCrop"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_below="@+id/tvUsername"/>
 
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        tools:text="trying to look hipster" />
+        android:textColor="@color/white"
+        tools:text="trying to look hipster"
+        android:layout_below="@+id/ivImage"/>
 
     <TextView
         android:id="@+id/tvDate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:text="Relative time ago"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/ivImage"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
-        tools:text="6 days ago" />
+        android:textColor="@color/white"
+        android:layout_marginRight="5dp" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipeContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -47,9 +65,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvItems"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</LinearLayout>
+</RelativeLayout>

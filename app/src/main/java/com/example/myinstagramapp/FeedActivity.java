@@ -1,8 +1,10 @@
 package com.example.myinstagramapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.GridView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,10 +32,21 @@ public class FeedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
+        getSupportActionBar().setIcon(R.drawable.name_logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        PostsAdapter.OnClickListener OnClickListener = new PostsAdapter.OnClickListener() {
+            @Override
+            public void onPostClicked(int position) {
+                Intent intent = new Intent(FeedActivity.this, DetailsActivity.class);
+                intent.putExtra("post", allPosts.get(position));
+                startActivity(intent);
+            }
+        };
         rvPosts = findViewById(R.id.rvPosts);
         // initialize the array that will hold posts and create a PostsAdapter
         allPosts = new ArrayList<>();
-        adapter = new PostsAdapter(this, allPosts);
+        adapter = new PostsAdapter(this, allPosts, OnClickListener);
         // set the adapter on the recycler view
         rvPosts.setAdapter(adapter);
         // set the layout manager on the recycler view
@@ -57,6 +70,7 @@ public class FeedActivity extends AppCompatActivity {
                 android.R.color.holo_red_light);
         // query posts from Parstagram
         queryPostsUpdate();
+
     }
 
     private void queryPostsUpdate() {
