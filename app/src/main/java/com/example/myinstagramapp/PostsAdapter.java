@@ -26,8 +26,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     private Post post;
 
-    private Context context;
-    private List<Post> posts;
+    private final Context context;
+    private final List<Post> posts;
     private TextView tvRelativeTime;
     private TextView tvUsername;
     private TextView tvDescription;
@@ -76,7 +76,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             // Bind the post data to the view elements
             tvDescription.setText(post.getKeyDescription());
             tvUsername.setText(post.getUser().getUsername());
-            String timeAgo = post.calculateTimeAgo(post.getCreatedAt());
+            String timeAgo = Post.calculateTimeAgo(post.getCreatedAt());
             tvRelativeTime.setText(timeAgo);
             ParseFile image = post.getImage();
             ivImage.setOnClickListener(new View.OnClickListener() {
@@ -102,20 +102,4 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         posts.addAll(list);
         notifyDataSetChanged();
     }
-
-    /*public String getRelativeTimeAgo(String rawJsonDate) {
-        String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
-        SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
-        sf.setLenient(true);
-
-        String relativeDate = "";
-        try {
-            //long dateMillis = ;
-            relativeDate = DateUtils.getRelativeTimeSpanString(ateUtils.SECOND_IN_MILLIS).toString();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return relativeDate;
-    }*/
 }

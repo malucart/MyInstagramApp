@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 ParseUser parser = ParseUser.getCurrentUser();
-                parser.logOutInBackground(e -> {
+                ParseUser.logOutInBackground(e -> {
                     ParseUser.logOut();
                 });
             }

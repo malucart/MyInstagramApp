@@ -2,6 +2,7 @@ package com.example.myinstagramapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,7 +39,7 @@ public class FeedActivity extends AppCompatActivity {
         // set the layout manager on the recycler view
         rvPosts.setLayoutManager(new LinearLayoutManager(this));
         // Lookup the swipe container view
-        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer = findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -83,9 +84,6 @@ public class FeedActivity extends AppCompatActivity {
                     Log.i(TAG, "Post: " + post.getKeyDescription() + ", username: " + post.getUser().getUsername());
                 }
 
-                // save received posts to list and notify adapter of new data
-                /*allPosts.addAll(posts);
-                adapter.notifyDataSetChanged();*/
                 // save received posts to list and notify adapter of new data
                 adapter.addAll(posts);
                 // Refreshed finished

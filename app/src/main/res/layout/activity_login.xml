@@ -3,38 +3,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:backgroundTint="@color/black"
     android:orientation="vertical"
     tools:context=".LoginActivity">
+
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="100dp"
+        android:src="@drawable/name_logo" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="username" />
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:ems="8"
+        android:hint="username"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/dark_gray"
+        android:textColorHint="@color/dark_gray"
+        android:backgroundTint="@color/dark_gray"/>
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="8dp"
         android:hint="password"
+        android:textColor="@color/dark_gray"
+        android:textColorHint="@color/dark_gray"
+        android:backgroundTint="@color/dark_gray"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Login" />
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:backgroundTint="@color/blue"
+        android:textColorHint="@color/white"
+        android:textAllCaps="false"
+        android:text="Log In" />
 
     <Button
         android:id="@+id/btnSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Sign up" />
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:backgroundTint="@color/blue"
+        android:textColorHint="@color/white"
+
+        android:text="Sign up"
+        android:textAllCaps="false" />
 </LinearLayout>
